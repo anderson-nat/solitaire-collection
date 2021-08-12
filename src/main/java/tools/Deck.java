@@ -2,6 +2,14 @@ package main.java.tools;
 
 import java.util.Stack;
 
+/**
+ * Abstract Deck class that includes basic functionality for initialization, shuffling, and drawing.
+ * Individual solitaire types may have different functionalities for things such as a discard pile, so each one will
+ * have a separate sub-class to handle those differences
+ *
+ * @author Nat Anderson
+ * Date Last Modified: 2021-08-12
+ */
 public abstract class Deck {
 
     private final Stack<Card> deck = new Stack<>();
