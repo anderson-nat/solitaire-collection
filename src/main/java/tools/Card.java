@@ -1,7 +1,6 @@
 package main.java.tools;
 
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * Card class handling the value, suit, and display image of individual card.
