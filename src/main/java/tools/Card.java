@@ -15,7 +15,7 @@ public class Card {
     private final int number; // 1 = Ace | 2-10 = 2-10 | 11 = Jack | 12 = Queen | 13 = King
 
     // Allows for quick conversion from number to abbreviated card type
-    private final String[] values = new String[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+    private static final String[] values = new String[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
     /**
      * Makes it easier to state which suit a card is
@@ -33,5 +33,23 @@ public class Card {
 
         // Image files are saved in the format of "{Number/AJQK}{Suit Abbreviation}.jpg"
         image = new Image(String.format("/main/resources/%s%c.jpg", values[number - 1], suit.toString().charAt(0)));
+    }
+
+    // Getter methods for suit, number, value, and image
+
+    public Suit getSuit() {
+        return suit;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getValue() {
+        return values[number - 1];
+    }
+
+    public Image getImage() {
+        return image;
     }
 }
