@@ -4,6 +4,9 @@ import javafx.scene.image.Image;
 
 /**
  * Card class handling the value, suit, and display image of individual card.
+ *
+ * @author Nat Anderson
+ * Date Last Modified: 2021-08-12
  */
 public class Card {
 

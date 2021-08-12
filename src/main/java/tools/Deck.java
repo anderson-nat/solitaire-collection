@@ -1,18 +1,20 @@
 package main.java.tools;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.Stack;
 
 /**
- * Abstract Deck class that includes basic functionality for initialization, shuffling, and drawing.
- * Individual solitaire types may have different functionalities for things such as a discard pile, so each one will
- * have a separate sub-class to handle those differences
+ * Deck class that includes basic functionality for initialization, shuffling, and drawing.
  *
  * @author Nat Anderson
  * Date Last Modified: 2021-08-12
  */
-public abstract class Deck {
+public class Deck {
 
     private final Stack<Card> deck = new Stack<>();
+    private final Stack<Card> discard = new Stack<>();
 
     /**
      * Default Constructor
@@ -34,20 +36,46 @@ public abstract class Deck {
                 }
             }
         }
+
+        this.shuffle();
     }
 
     /**
      * Shuffles the cards, randomizing their order
      */
     public void shuffle() {
+        final Random random = new Random();
 
+        Card[] temp = new Card[deck.size()];
+        List<Card> buffer = Arrays.asList(deck.toArray(temp));
+
+        deck.clear();
+        do {
+            Card removed = buffer.remove(random.nextInt(buffer.size()));
+            deck.push(removed);
+        } while (!buffer.isEmpty());
     }
 
     /**
      * Removes the top card of the deck and returns it
+     * If the deck was empty, cards from the discard pile are added back into the deck
      * @return the card removed from the top of the deck
      */
     public Card draw() {
+        if (deck.isEmpty()) {
+            do {
+                deck.push(discard.pop());
+            } while (!discard.isEmpty());
+            this.shuffle();
+        }
         return deck.pop();
+    }
+
+    /**
+     * Adds a card to the discard stack
+     * @param card : the card to add to the discard stack
+     */
+    public void discard(Card card) {
+        discard.push(card);
     }
 }
