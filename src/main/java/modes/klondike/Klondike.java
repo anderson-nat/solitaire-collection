@@ -11,9 +11,9 @@ import main.java.modes.Game;
  * This class handles all the gameplay mechanics of Knlondike Solitaire
  *
  * @author Nat Anderson
- * Date Last Modified: 2021-08-12
+ * Date Last Modified: 2021-08-16
  */
-public class Klondike implements Game {
+public class Klondike extends Game {
 
     // TODO
 

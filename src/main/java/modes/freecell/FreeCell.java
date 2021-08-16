@@ -11,9 +11,9 @@ import main.java.modes.Game;
  * This class handles the gameplay mechanics FreeCell
  *
  * @author Nat Anderson
- * Date Last Modified: 2021-08-12
+ * Date Last Modified: 2021-08-16
  */
-public class FreeCell implements Game {
+public class FreeCell extends Game {
 
     // TODO
 
