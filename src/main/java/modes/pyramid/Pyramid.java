@@ -1,6 +1,6 @@
 package main.java.modes.pyramid;
 
-import main.java.modes.Game;
+import main.java.modes.Gamemode;
 
 /**
  * Pyramid is a patience or solitaire game where the object is to get all the cards from the pyramid to the foundation.
@@ -12,7 +12,7 @@ import main.java.modes.Game;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-16
  */
-public class Pyramid extends Game {
+public class Pyramid extends Gamemode {
 
     // TODO
 

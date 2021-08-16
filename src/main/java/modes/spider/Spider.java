@@ -1,6 +1,6 @@
 package main.java.modes.spider;
 
-import main.java.modes.Game;
+import main.java.modes.Gamemode;
 
 /**
  * Spider is a type of patience game, and is one of the more popular two-deck solitaire games. The game
@@ -11,7 +11,7 @@ import main.java.modes.Game;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-16
  */
-public class Spider extends Game {
+public class Spider extends Gamemode {
 
     // TODO
 

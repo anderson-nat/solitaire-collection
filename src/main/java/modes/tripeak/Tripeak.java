@@ -1,6 +1,6 @@
 package main.java.modes.tripeak;
 
-import main.java.modes.Game;
+import main.java.modes.Gamemode;
 
 /**
  * Tri Peaks (also known as Three Peaks, Tri Towers or Triple Peaks) is a patience or solitaire card game that is akin
@@ -12,7 +12,7 @@ import main.java.modes.Game;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-12
  */
-public class Tripeak extends Game {
+public class Tripeak extends Gamemode {
 
     // TODO
 

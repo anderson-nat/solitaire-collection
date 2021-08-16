@@ -1,6 +1,6 @@
 package main.java.modes.klondike;
 
-import main.java.modes.Game;
+import main.java.modes.Gamemode;
 
 /**
  * Klondike is a solitaire card game. In the U.S. and Canada, Klondike is the best-known solitaire card game, to the
@@ -13,7 +13,7 @@ import main.java.modes.Game;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-16
  */
-public class Klondike extends Game {
+public class Klondike extends Gamemode {
 
     // TODO
 

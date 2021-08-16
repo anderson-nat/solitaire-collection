@@ -1,6 +1,6 @@
 package main.java.modes.freecell;
 
-import main.java.modes.Game;
+import main.java.modes.Gamemode;
 
 /**
  * FreeCell is a solitaire card game played using the standard 52-card deck. It is fundamentally different from most
@@ -13,7 +13,7 @@ import main.java.modes.Game;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-16
  */
-public class FreeCell extends Game {
+public class FreeCell extends Gamemode {
 
     // TODO
 
