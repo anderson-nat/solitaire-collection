@@ -12,7 +12,7 @@ import main.java.modes.Game;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-12
  */
-public class Tripeak implements Game {
+public class Tripeak extends Game {
 
     // TODO
 

@@ -6,16 +6,20 @@ import javafx.scene.image.Image;
  * Card class handling the value, suit, and display image of individual card.
  *
  * @author Nat Anderson
- * Date Last Modified: 2021-08-12
+ * Date Last Modified: 2021-08-16
  */
 public class Card {
 
+    private static final Image backImage = new Image("/main/resources/Gray_back.jpg");
     private final Image image; // Image of the card to display while playing
+
     private final Suit suit;
     private final int number; // 1 = Ace | 2-10 = 2-10 | 11 = Jack | 12 = Queen | 13 = King
 
     // Allows for quick conversion from number to abbreviated card type
     private static final String[] values = new String[] {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+
+    private boolean isVisible = false;
 
     /**
      * Makes it easier to state which suit a card is
@@ -50,6 +54,18 @@ public class Card {
     }
 
     public Image getImage() {
-        return image;
+        if (isVisible) {
+            return image; // Only return front-face of card if it is visible.
+        }
+        return backImage;
+    }
+
+    // Getter and Setter method for Card visibility
+    public boolean getVisibility() {
+        return isVisible;
+    }
+
+    public void flip() {
+        isVisible = !isVisible;
     }
 }

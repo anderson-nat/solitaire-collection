@@ -9,9 +9,9 @@ import main.java.modes.Game;
  * [Source & More Info: https://en.wikipedia.org/wiki/Spider_(solitaire)]
  *
  * @author Nat Anderson
- * Date Last Modified: 2021-08-12
+ * Date Last Modified: 2021-08-16
  */
-public class Spider implements Game {
+public class Spider extends Game {
 
     // TODO
 
