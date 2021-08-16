@@ -2,6 +2,7 @@ package main.java.modes;
 
 import main.java.tools.Card;
 import main.java.tools.Deck;
+import main.java.tools.TargetStack;
 
 /**
  * Commonalities among all gamemodes
@@ -9,14 +10,14 @@ import main.java.tools.Deck;
  * @author Nat Anderson
  * Date Last Modified: 2021-08-16
  */
-public abstract class Game {
+public abstract class Gamemode {
 
     protected Deck deck; // The deck of cards that will be used in each gamemode (subclass).
 
     /**
      * Default Constructor that creates a deck containing only one copy of each card.
      */
-    protected Game() {
+    protected Gamemode() {
         deck = new Deck();
     }
 
@@ -24,7 +25,7 @@ public abstract class Game {
      * Constructor that creates an abnormally sized deck of cards for the game.
      * @param copies : amount of copies of each card to be present in the deck
      */
-    protected Game(int copies) {
+    protected Gamemode(int copies) {
         deck = new Deck(copies);
     }
 
@@ -45,5 +46,17 @@ public abstract class Game {
         return dealtCards;
     }
 
-    
+    /**
+     * Creates 4 TargetStacks (one per suit) in an array and returns the array.
+     * @return an array containing 4 distinct TargetStacks
+     */
+    protected TargetStack[] createTargetStacks() {
+        TargetStack[] targetStacks = new TargetStack[4];
+
+        for (int i = 0; i < Card.Suit.values().length; i++) {
+            targetStacks[i] = new TargetStack(Card.Suit.values()[i]);
+        }
+
+        return targetStacks;
+    }
 }
