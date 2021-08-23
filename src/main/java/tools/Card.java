@@ -1,17 +1,15 @@
 package main.java.tools;
 
-import javafx.scene.image.Image;
-
 /**
  * Card class handling the value, suit, and display image of individual card.
  *
  * @author Nat Anderson
- * Date Last Modified: 2021-08-16
+ * Date Last Modified: 2021-08-23
  */
 public class Card {
 
-    private static final Image backImage = new Image("/main/resources/Gray_back.jpg");
-    private final Image image; // Image of the card to display while playing
+    private static final String backImageURL = "/main/resources/Gray_back.jpg";
+    private final String imageURL; // Image of the card to display while playing
 
     private final Suit suit;
     private final int number; // 1 = Ace | 2-10 = 2-10 | 11 = Jack | 12 = Queen | 13 = King
@@ -31,12 +29,23 @@ public class Card {
         DIAMOND
     }
 
-    public Card(int number, Suit suit) {
+    public Card(int number, Suit suit) throws IllegalArgumentException {
+
+        //Exceptions
+        if (number < 1 || number > 13) {
+            throw new IllegalArgumentException(String.format("Number (%d) is not within valid range of [1, 13].", number));
+        }
+
+        if (suit == null) {
+            throw new IllegalArgumentException("Suit cannot be null.");
+        }
+
+        // Set instance variable values
         this.number = number;
         this.suit = suit;
 
         // Image files are saved in the format of "{Number/AJQK}{Suit Abbreviation}.jpg"
-        image = new Image(String.format("/main/resources/%s%c.jpg", values[number - 1], suit.toString().charAt(0)));
+        imageURL = String.format("/main/resources/%s%c.jpg", values[number - 1], suit.toString().charAt(0));
     }
 
     // Getter methods for suit, number, value, and image
@@ -53,11 +62,11 @@ public class Card {
         return values[number - 1];
     }
 
-    public Image getImage() {
+    public String getImageURL() {
         if (isVisible) {
-            return image; // Only return front-face of card if it is visible.
+            return imageURL; // Only return front-face of card if it is visible.
         }
-        return backImage;
+        return backImageURL;
     }
 
     // Getter and Setter method for Card visibility

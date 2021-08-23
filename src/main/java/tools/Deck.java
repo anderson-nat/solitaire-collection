@@ -1,15 +1,12 @@
 package main.java.tools;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Deck class that includes basic functionality for initialization, shuffling, and drawing.
  *
  * @author Nat Anderson
- * Date Last Modified: 2021-08-12
+ * Date Last Modified: 2021-08-23
  */
 public class Deck {
 
@@ -28,7 +25,10 @@ public class Deck {
      * Creates a deck of cards which contains n copies of each card, as specified by the copies parameter
      * @param copies : the number of copies of each card that should appear in this deck
      */
-    public Deck(int copies) {
+    public Deck(int copies) throws IllegalArgumentException {
+
+        if (copies < 1) throw new IllegalArgumentException("Copies parameter must be >= 1.");
+
         for (int iteration = 0; iteration < copies; iteration++) {
             for (int number = 1; number <= 13; number++) {
                 for (Card.Suit suit : Card.Suit.values()) {
@@ -44,12 +44,16 @@ public class Deck {
      * Shuffles the cards, randomizing their order
      */
     public void shuffle() {
-        final Random random = new Random();
+        final Random random = new Random(); // Initialize a Random object to allow for random number generation
 
+        // Copy the deck into a new List
         Card[] temp = new Card[deck.size()];
-        List<Card> buffer = Arrays.asList(deck.toArray(temp));
+        ArrayList<Card> buffer = new ArrayList<>(Arrays.asList(deck.toArray(temp)));
 
+        // Clear the deck
         deck.clear();
+
+        // Add the cards back into the deck randomly until the copy list is empty.
         do {
             Card removed = buffer.remove(random.nextInt(buffer.size()));
             deck.push(removed);
@@ -62,12 +66,15 @@ public class Deck {
      * @return the card removed from the top of the deck
      */
     public Card draw() {
+        // If the deck is empty, add every card from discard back into the deck
         if (deck.isEmpty()) {
             do {
                 deck.push(discard.pop());
             } while (!discard.isEmpty());
             this.shuffle();
         }
+
+
         return deck.pop();
     }
 
@@ -77,5 +84,31 @@ public class Deck {
      */
     public void discard(Card card) {
         discard.push(card);
+    }
+
+    /**
+     * Checks to see if a deck is equal to another object
+     * @param object : The object to check against this deck
+     * @return true if the object is equal, false otherwise
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Deck) {
+
+            Deck otherDeck = (Deck)object;
+            return deck.equals(otherDeck.deck) && discard.equals(otherDeck.discard);
+
+        }
+
+        return false;
+    }
+
+    // Getter methods for deck and discard stack sizes
+    public int getDeckSize() {
+        return deck.size();
+    }
+
+    public int getDiscardSize() {
+        return discard.size();
     }
 }
